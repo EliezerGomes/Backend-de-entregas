@@ -26,7 +26,7 @@ export class AutheticateDeliverymanUseCase {
             throw new Error("Username or password invalid!")
         }
         // gerar o token
-        const token = sign({ username }, "setembro", {
+        const token = sign({ username }, "outubro", {
             subject: deliveryman.id,
             expiresIn: "1d"
         })
