@@ -11,7 +11,9 @@ export class CreateDeliverymanUseCase {
         //validar se o deliveryman existe
         const deliverymanExist = await prisma.deliveryman.findFirst({
             where: {
-                username
+                username: {
+                    equals: username
+                }
             }
         });
 
