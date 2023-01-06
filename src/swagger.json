@@ -1,0 +1,241 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Delivey Documantation",
+        "description": "This is an API Delivery",
+        "version": "1.0.0",
+        "contact": {
+            "email": "eliezerportilho@gmail.com"
+        }
+    },
+    "paths": {
+        "/clients": {
+            "post": {
+                "tags": ["Client"],
+                "summary": "Create a client",
+                "description": "Create a new client",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "propeties": {
+                                    "username": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "username": "user 1",
+                                    "password": "password"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "500": {
+                        "description": "User already exists"
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Client"],
+                "summary": "Lists all deliveries",
+                "description": "Lists all deliveries for a client",
+                "responses": {
+                    "200": {
+                        "description": "sucess",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "username": {
+                                                "type": "string"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deliveries": {
+            "post": {
+                "tags": ["Delivery"],
+                "summary": "Create a new delivery",
+                "description": "Create a new delivery",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "item_name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "item_name": "Hamburguer"
+                                }
+                            }
+                        }
+                    }
+                },   
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "500": {
+                        "description": "Delivery already exists"
+                    }
+                }
+            }    
+        },
+        "/deliveries/available": {
+            "get": {
+                "tags": ["Delivery"],
+                "summary": "Lists all deliveries",
+                "description": "List all deliveries registered",
+                "responses": {
+                    "200": {
+                        "description": "sucess",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "item_name": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/deliveries/update/{id}": {
+            "put": {
+                "tags": ["Delivery"],
+                "summary": "Update delivery",
+                "description": "Update delivery",
+                "parameters": {
+                    "name": "id",
+                    "in": "parameters",
+                    "require": "true",
+                    "description": "Id parameter to update delivery",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "sucess"
+                    }
+                }
+            }
+        },
+        "/delivery/updateEndDate/{id}": {
+            "put": {
+                "tags": ["Delivery"],
+                "summary": "Update date delivery",
+                "description": "Update date delivery",
+                "parameters": {
+                    "name": "id",
+                    "in": "parameters",
+                    "require": "true",
+                    "description": "Id parameter to update date delivery",
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "sucess"
+                    }
+                }
+            }
+        },
+        "deliverymans": {
+            "post": {
+                "tags": ["Deliveryman"],
+                "summary": "Create a new deliveryman",
+                "description": "Create a new deliveryman",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "username": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "username": "delivery 1",
+                                    "password": "deliveryman"
+                                }
+                            }
+                        }
+                    }
+                },   
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "500": {
+                        "description": "Delivery already exists"
+                    }
+                }
+            }
+        },
+        "deliverymans/deliveries": {
+            "get": {
+                "tags": ["Deliveryman"],
+                "summary": "Lists all deliveries a deliveryman",
+                "description": "List all deliveries registered a deliveryman",
+                "responses": {
+                    "200": {
+                        "description": "sucess",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "item_name": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
